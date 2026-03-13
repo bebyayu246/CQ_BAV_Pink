@@ -156,6 +156,8 @@ namespace PraktikumADO
 
                 MessageBox.Show("Jumlah baris terpengaruh : " + hasil);
 
+                txtHasil.Text = hasil.ToString();
+
                 conn.Close();
 
             }
@@ -165,8 +167,30 @@ namespace PraktikumADO
             }
         }
 
+        private void btnInsertProdi_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Koneksi();
+                conn.Open();
 
+                string query = "INSERT INTO ProgramStudi VALUES ('MI01','Manajemen Informatika')";
 
+                cmd = new SqlCommand(query, conn);
+
+                int hasil = cmd.ExecuteNonQuery();
+
+                MessageBox.Show("Jumlah baris terpengaruh : " + hasil);
+
+                txtHasil.Text = hasil.ToString();
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
